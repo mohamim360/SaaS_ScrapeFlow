@@ -1,5 +1,6 @@
 import BreadcrumbHeader from "@/components/BreadcrumbHeader"
 import DesktopSidebar from "@/components/sidebar"
+import { ModeToggle } from "@/components/ThemeModelToggle"
 import { Separator } from "@/components/ui/separator"
 
 function layout({ children }: { children: React.ReactNode }) {
@@ -9,6 +10,9 @@ function layout({ children }: { children: React.ReactNode }) {
 			<div className="flex flex-col flex-1 min-h-screen ">
 				<header className="flex items-center justify-between px-6 py-4 h-[50px] container">
 					<BreadcrumbHeader />
+					<div className="flex items-center gap-1">
+						<ModeToggle/>
+					</div>
 				</header>
 				<Separator />
 				<div className="overflow-auto">
