@@ -1,5 +1,6 @@
 import BreadcrumbHeader from "@/components/BreadcrumbHeader"
-import DesktopSidebar from "@/components/sidebar"
+import DesktopSidebar from "@/components/sidebars/DesktopSidebar"
+
 import { ModeToggle } from "@/components/ThemeModelToggle"
 import { Separator } from "@/components/ui/separator"
 

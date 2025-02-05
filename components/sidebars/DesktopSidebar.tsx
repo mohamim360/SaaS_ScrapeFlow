@@ -1,32 +1,11 @@
 "use client"
 
-import { CoinsIcon, HomeIcon, LayoutIcon, ShieldIcon } from "lucide-react"
-import Logo from "./Logo"
+import Logo from "../Logo"
 import Link from "next/link"
-import { buttonVariants } from "./ui/button"
+import { buttonVariants } from "../ui/button"
 import { usePathname } from "next/navigation"
-const routes = [
-	{
-		href: "/",
-		label: "Home",
-		icon: HomeIcon,
-	},
-	{
-		href: "workflows",
-		label: "Workflows",
-		icon: LayoutIcon,
-	},
-	{
-		href: "credentials",
-		label: "Credentials",
-		icon: ShieldIcon,
-	},
-	{
-		href: "billing",
-		label: "Billing",
-		icon: CoinsIcon,
-	}
-]
+import { routes } from "@/lib/data"
+
 function DesktopSidebar() {
 	const pathName = usePathname()
 	const activeRoute = routes.find((route) => route.href.length > 0 && pathName.includes(route.href)) || routes[0]
