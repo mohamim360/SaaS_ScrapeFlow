@@ -1,6 +1,7 @@
+import { GetWorkflowsForUser } from "@/actions/workflows/getWorkflowsForUser"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Skeleton } from "@/components/ui/skeleton"
-import { waitFor } from "@/lib/helper/waitFor"
-import { User } from "lucide-react"
+import { AlertCircle } from "lucide-react"
 import { Suspense } from "react"
 
 function page() {
@@ -33,7 +34,16 @@ function UserWorkflowSkeleton() {
 }
 
 async function UserWorkflows() {
-	await waitFor(4000)
+	const workflows = await GetWorkflowsForUser()
+	if (!workflows) {
+		return (
+			<Alert variant={"destructive"}>
+				<AlertCircle className="w-4 h-4"/>
+				<AlertTitle>Failed to fetch workflows</AlertTitle>
+				<AlertDescription>There was an error fetching your workflows. Please try again later.</AlertDescription>
+			</Alert>
+		)
+	}
 	return (
 		<div>
 
