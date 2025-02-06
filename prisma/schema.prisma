@@ -12,7 +12,7 @@ datasource db {
 
 model Workflow {
   id        String   @id @default(cuid())
-  userTd    String
+  userId    String
   name      String
   description String?
 
@@ -22,6 +22,6 @@ model Workflow {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([name, userTd])
+  @@unique([name, userId])
 
 }
