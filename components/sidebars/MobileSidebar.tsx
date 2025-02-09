@@ -12,7 +12,12 @@ import Link from "next/link"
 function MobileSidebar() {
 	const [isOpen, setOpen] = useState(false)
 	const pathName = usePathname()
-	const activeRoute = routes.find((route) => route.href.length > 0 && pathName.includes(route.href)) || routes[0]
+	const activeRoute = routes.find(route => route.href === pathName) || 
+  routes.find(route => pathName.startsWith(route.href) && route.href !== "/") || 
+  routes[0];
+
+console.log("Current Path:", pathName);
+console.log("Matched Route:", activeRoute);
 	return (
 		<div className="block border-separate bg-background md:hidden">
 			<nav className="container flex items-center justify-between px-8">

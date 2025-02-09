@@ -6,17 +6,17 @@ export const routes = [
 		icon: HomeIcon,
 	},
 	{
-		href: "workflows",
+		href: "/workflows",
 		label: "Workflows",
 		icon: LayoutIcon,
 	},
 	{
-		href: "credentials",
+		href: "/credentials",
 		label: "Credentials",
 		icon: ShieldIcon,
 	},
 	{
-		href: "billing",
+		href: "/billing",
 		label: "Billing",
 		icon: CoinsIcon,
 	}

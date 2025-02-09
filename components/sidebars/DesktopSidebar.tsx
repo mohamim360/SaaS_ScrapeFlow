@@ -8,7 +8,13 @@ import { routes } from "@/lib/data"
 
 function DesktopSidebar() {
 	const pathName = usePathname()
-	const activeRoute = routes.find((route) => route.href.length > 0 && pathName.includes(route.href)) || routes[0]
+	const activeRoute = routes.find(route => route.href === pathName) || 
+  routes.find(route => pathName.startsWith(route.href) && route.href !== "/") || 
+  routes[0];
+
+console.log("Current Path:", pathName);
+console.log("Matched Route:", activeRoute);
+
 	return (
 		<div className="hidden relative md:block min-w-[280px] max-w-[280px] w-full bg-primary/5 dark:bg-secondary/30 dark:text-foreground text-muted-foreground border-r-2 border-separate">
 			<div className=" flex items-center justify-center gap-2 border-b-[1px]  p-4 border-separate">
