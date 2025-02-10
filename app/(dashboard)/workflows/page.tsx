@@ -1,4 +1,4 @@
-"use client"
+
 import { GetWorkflowsForUser } from "@/actions/workflows/getWorkflowsForUser"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -37,37 +37,37 @@ function UserWorkflowSkeleton() {
 }
 
 
-	async function UserWorkflows() {
-		const workflows = await GetWorkflowsForUser()
-		if (!workflows) {
-			return (
-				<Alert variant={"destructive"}>
-					<AlertCircle className="w-4 h-4" />
-					<AlertTitle>Failed to fetch workflows</AlertTitle>
-					<AlertDescription>There was an error fetching your workflows. Please try again later.</AlertDescription>
-				</Alert>
-			)
-		}
-		if (workflows.length === 0) {
-			return (
-				<div className="flex flex-col items-center justify-center gap-4 h-full">
-					<div className="rounded-full bg-accent w-20 h-20 flex items-center justify-center">
-						<InboxIcon size={40} className="stroke-primary" />
-					</div>
-					<div className="flex flex-col items-center gap-1">
-						<p className="font-bold">No Workflow created yet</p>
-						<p className="text-sm text-muted-foreground">Click the button below to create your first workflow</p>
-					</div>
-					<CreateWorkflowDialog triggerText="Create your first workflow" />
-				</div>
-			)
-		}
+async function UserWorkflows() {
+	const workflows = await GetWorkflowsForUser()
+	if (!workflows) {
 		return (
-			<div>
-	
+			<Alert variant={"destructive"}>
+				<AlertCircle className="w-4 h-4" />
+				<AlertTitle>Failed to fetch workflows</AlertTitle>
+				<AlertDescription>There was an error fetching your workflows. Please try again later.</AlertDescription>
+			</Alert>
+		)
+	}
+	if (workflows.length === 0) {
+		return (
+			<div className="flex flex-col items-center justify-center gap-4 h-full">
+				<div className="rounded-full bg-accent w-20 h-20 flex items-center justify-center">
+					<InboxIcon size={40} className="stroke-primary" />
+				</div>
+				<div className="flex flex-col items-center gap-1">
+					<p className="font-bold">No Workflow created yet</p>
+					<p className="text-sm text-muted-foreground">Click the button below to create your first workflow</p>
+				</div>
+				<CreateWorkflowDialog triggerText="Create your first workflow" />
 			</div>
 		)
 	}
+	return (
+		<pre>
+			{JSON.stringify(workflows, null, 4)}
+		</pre>
+	)
+}
 
 export default page
 
