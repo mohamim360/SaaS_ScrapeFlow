@@ -31,6 +31,9 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 		},
 		onError: () => {
 			toast.error("Failed to create workflow", {id: "create-workflow"})
+		},
+		onSettled: () => {
+			console.log("Mutation completed");
 		}
 	})
 
