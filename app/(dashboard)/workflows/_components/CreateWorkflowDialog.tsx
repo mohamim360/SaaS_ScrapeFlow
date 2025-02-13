@@ -20,17 +20,17 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 
 	const form = useForm<createWorkflowSchemaType>({
 		resolver: zodResolver
-		(createWorkflowSchema),
+			(createWorkflowSchema),
 		defaultValues: {}
 	})
 
-	const {mutate, isPending} = useMutation({
+	const { mutate, isPending } = useMutation({
 		mutationFn: createWorkflow,
 		onSuccess: () => {
-			toast.success("Workflow created successfully", {id: "create-workflow"})
+			toast.success("Workflow created successfully", { id: "create-workflow" })
 		},
 		onError: () => {
-			toast.error("Failed to create workflow", {id: "create-workflow"})
+			toast.error("Failed to create workflow", { id: "create-workflow" })
 		},
 		onSettled: () => {
 			console.log("Mutation completed");
@@ -38,11 +38,14 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 	})
 
 	const onSubmit = useCallback((values: createWorkflowSchemaType) => {
-		toast.loading("Creating workflow...", {id: "create-workflow"})
+		toast.loading("Creating workflow...", { id: "create-workflow" })
 		mutate(values)
 	}, [mutate])
 	return (
-		<Dialog open={open} onOpenChange={setOpen}>
+		<Dialog open={open} onOpenChange={(open) => {
+			form.reset();
+			setOpen(open)
+		}}>
 			<DialogTrigger asChild>
 				<Button>{triggerText ?? "Create Workflow"}</Button>
 			</DialogTrigger>
@@ -51,10 +54,10 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 					icon={Layers2Icon}
 					title="Create Workflow"
 					subTitle="Start building your workflow" />
-					<div className="p-6">
-						<FormProvider {...form}>
-							<form className="space-y-8 w-full" onSubmit={form.handleSubmit(onSubmit)}>
-								<FormField
+				<div className="p-6">
+					<FormProvider {...form}>
+						<form className="space-y-8 w-full" onSubmit={form.handleSubmit(onSubmit)}>
+							<FormField
 								control={form.control}
 								name="name"
 								render={({ field }) => (
@@ -71,9 +74,9 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 										</FormDescription>
 									</FormItem>
 								)}
-								/>
-								{/* description */}
-								<FormField
+							/>
+							{/* description */}
+							<FormField
 								control={form.control}
 								name="description"
 								render={({ field }) => (
@@ -90,15 +93,15 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 										</FormDescription>
 									</FormItem>
 								)}
-								/>
+							/>
 
-								<Button type="submit" className="w-full" disabled={isPending}>
-									{!isPending && "Proceed"}
-									{isPending && <Loader2 className="animate-spin" />}
-									</Button>
-							</form>
-						</FormProvider>
-					</div>
+							<Button type="submit" className="w-full" disabled={isPending}>
+								{!isPending && "Proceed"}
+								{isPending && <Loader2 className="animate-spin" />}
+							</Button>
+						</form>
+					</FormProvider>
+				</div>
 			</DialogContent>
 		</Dialog>
 	)
