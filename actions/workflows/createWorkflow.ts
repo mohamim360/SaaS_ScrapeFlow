@@ -15,6 +15,16 @@ export async function createWorkflow(form: createWorkflowSchemaType) {
 		throw new Error("User not found");
 	}
 
+	const existingWorkflow = await prisma.workflow.findFirst({
+		where: {
+			name: data.name,
+			userId,
+		},
+	});
+	if (existingWorkflow) {
+		throw new Error("Workflow already exists");
+	}
+
 	const result = await prisma.workflow.create({
 		data: {
 			userId,
