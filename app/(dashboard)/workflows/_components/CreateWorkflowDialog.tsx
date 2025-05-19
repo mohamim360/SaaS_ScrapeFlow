@@ -38,6 +38,7 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 	})
 
 	const onSubmit = useCallback((values: createWorkflowSchemaType) => {
+		values.name = values.name.trim();
 		toast.loading("Creating workflow...", { id: "create-workflow" })
 		mutate(values)
 	}, [mutate])
@@ -64,7 +65,9 @@ function CreateWorkflowDialog({ triggerText }: { triggerText?: string }) {
 									<FormItem>
 										<FormLabel className="flex gap-1 items-center">
 											Name
-											<p className="text-xs text-muted-foreground">(required)</p>
+											{form.formState.errors.name ? (
+												<p className="text-xs text-muted-foreground">({form.formState.errors.name.message})</p>
+											): (<p>(required)</p>)}
 										</FormLabel>
 										<FormControl>
 											<Input {...field} />
