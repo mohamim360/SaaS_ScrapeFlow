@@ -8,13 +8,17 @@ import { MoreHorizontalIcon, TrashIcon } from "lucide-react"
 import { useState } from "react"
 import DeleteWorkflowDialog from "./DeleteWorkflowDialog"
 
-function WorkflowActions({workflowName} : {workflowName: string}) {
+function WorkflowActions({workflowName , workflowId} : {workflowName: string, workflowId: string}) {
 	const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 	console.log(setShowDeleteDialog);
 	return (
 		<>
-			<DeleteWorkflowDialog open={showDeleteDialog} setOpen={setShowDeleteDialog} 
-			workflowName={workflowName}/>
+			<DeleteWorkflowDialog 
+			open={showDeleteDialog} 
+			setOpen={setShowDeleteDialog} 
+			workflowName={workflowName}
+			workflowId={workflowId}
+			/>
 
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>

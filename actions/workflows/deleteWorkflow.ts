@@ -6,15 +6,16 @@ import { revalidatePath } from "next/cache";
 
 export async function DeleteWorkflow(id: string) {
   const { userId } = auth();
-	if(!userId){
-		throw new Error("User not found")
-	}
-	return prisma.workflow.delete({
-			where: {
-				id,
-				userId,
-			},
-		});
-		
-		revalidatePath('/workflows')
+  if (!userId) {
+    throw new Error("User not found");
+  }
+  const deletedWorkflow = await prisma.workflow.delete({
+    where: {
+      id,
+      userId,
+    },
+  });
+
+  revalidatePath("/workflows");
+  return deletedWorkflow;
 }
