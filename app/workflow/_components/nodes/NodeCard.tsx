@@ -21,7 +21,8 @@ function NodeCard({ children, nodeId, isSelected }: { children: React.ReactNode,
 				// Center the node in the viewport
 				setCenter(x, y, { zoom: 1, duration: 500 })
 			}}
-			className={cn("rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-sm gap-1 flex flex-col", isSelected && "border-primary")}>{children}
+			className={cn("rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-sm gap-1 flex flex-col", isSelected && "border-primary")}>
+			{children}
 		</div>
 	)
 }

@@ -7,4 +7,8 @@ export const LaunchBrowserTask = {
 	icon: (props: LucideProps) => (
 		<GlobeLock className="stroke-pink-400" {...props} />
 	),
+	isEntryPoint: true
 }
+
+//You're assigning a function that returns JSX to the icon key.
+//This makes icon effectively a React component!
