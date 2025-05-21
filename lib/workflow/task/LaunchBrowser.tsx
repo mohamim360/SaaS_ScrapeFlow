@@ -1,4 +1,4 @@
-import { TaskType } from "@/types/TaskType";
+import { TaskParamType, TaskType } from "@/types/TaskType";
 import { GlobeLock, LucideProps } from "lucide-react";
 
 export const LaunchBrowserTask = {
@@ -7,7 +7,10 @@ export const LaunchBrowserTask = {
 	icon: (props: LucideProps) => (
 		<GlobeLock className="stroke-pink-400" {...props} />
 	),
-	isEntryPoint: true
+	isEntryPoint: true,
+	inputs: [
+		{ name: "Website URL", type: TaskParamType.STRING, required: true, helperText: "eg: https://www.google.com", hideHandle: true },
+	]
 }
 
 //You're assigning a function that returns JSX to the icon key.
