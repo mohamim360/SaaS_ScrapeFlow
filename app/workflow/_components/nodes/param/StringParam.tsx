@@ -3,9 +3,10 @@
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ParamProps } from "@/types/appNode"
-import { useId } from "react"
+import { useId, useState } from "react"
 
-function StringParam({ param }: ParamProps) {
+function StringParam({ param, value, updateNodeParamValue }: ParamProps) {
+	const [internalvalue, setInternalValue] = useState(value)
 	const id = useId()
 	return (
 		<div className="space-y-2 p-1 w-full">
@@ -13,7 +14,15 @@ function StringParam({ param }: ParamProps) {
 				{param.name}
 				{param.required && <p className="text-red-400 px-2">*</p>}
 			</Label>
-			<Input id={id} />
+			<Input
+				id={id}
+				className="text-xs"
+				value={internalvalue}
+				onChange={(e) => {
+					setInternalValue(e.target.value)
+				}}
+				onBlur={(e) => updateNodeParamValue(e.target.value)}
+			/>
 			{param.helperText && (
 				<p className="px-2 text-muted-foreground">{param.helperText}</p>
 			)}

@@ -12,15 +12,15 @@ const nodeTypes = {
 const snapGrid: [number, number] = [50, 50]
 const fitViewOptions = { padding: 1 }
 function FlowEditor({ workflow }: { workflow: Workflow }) {
-	const [node, setNode, onNodeChange] = useNodesState([createFlowNode(TaskType.LAUNCH_BROWSER)])
-	const [edge, setEdge, onEdgeChange] = useEdgesState([])
+	const [nodes, setNode, onNodesChange] = useNodesState([createFlowNode(TaskType.LAUNCH_BROWSER)])
+	const [edges, setEdge, onEdgesChange] = useEdgesState([])
 	return (
 		<div className="w-full h-full">
 			<ReactFlow
-				nodes={node}
-				edges={edge}
-				onNodesChange={onNodeChange}
-				onEdgesChange={onEdgeChange}
+				nodes={nodes}
+				edges={edges}
+				onNodesChange={onNodesChange}
+				onEdgesChange={onEdgesChange}
 				nodeTypes={nodeTypes}
 				snapToGrid={true}
 				snapGrid={snapGrid}

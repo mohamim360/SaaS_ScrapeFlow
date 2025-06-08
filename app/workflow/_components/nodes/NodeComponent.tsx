@@ -9,6 +9,7 @@ import { NodeInput, NodeInputs } from "./NodeInputs";
 const NodeComponent = memo((props: NodeProps) => {
 	const nodeData = props.data as AppNodeData;
 	const task = taskRegistry[nodeData.type];
+	// console.log("NodeComponent", props.id, nodeData.type, task);
 	return (
 		<NodeCard
 			nodeId={props.id}
@@ -17,7 +18,7 @@ const NodeComponent = memo((props: NodeProps) => {
 			<NodeHeader taskType={nodeData.type} />
 			<NodeInputs>
 				{task.inputs.map(input => (
-					<NodeInput key={input.name} input={input} />
+					<NodeInput key={input.name} input={input} nodeId={props.id} />
 				))}
 			</NodeInputs>
 		</NodeCard>
