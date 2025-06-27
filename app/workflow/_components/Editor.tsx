@@ -5,6 +5,7 @@ import { ReactFlowProvider } from "@xyflow/react"
 import FlowEditor from "./FlowEditor"
 import Topbar from "./topbar/Topbar"
 function Editor({ workflow }: { workflow: Workflow }) {
+	console.log("Rendering Editor with workflow:", workflow);
 	return (
 		<ReactFlowProvider>
 			<div className="w-full h-full flex flex-col overflow-hidden">

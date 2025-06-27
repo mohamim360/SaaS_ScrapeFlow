@@ -7,7 +7,7 @@ export function createFlowNode(
 ): AppNode {
   return {
     id: crypto.randomUUID(),
-    type: "FlowScrapeNode",
+    type: "FlowScrapeNode",  // ✅ This refers to the node renderer (component) from `nodeTypes`
 		dragHandle:".drag-handle",
     data: {
       type: nodeType,

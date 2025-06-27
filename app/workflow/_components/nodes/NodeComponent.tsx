@@ -9,7 +9,7 @@ import { NodeInput, NodeInputs } from "./NodeInputs";
 const NodeComponent = memo((props: NodeProps) => {
 	const nodeData = props.data as AppNodeData;
 	const task = taskRegistry[nodeData.type];
-	// console.log("NodeComponent", props.id, nodeData.type, task);
+	console.log("NodeComponent", props, nodeData, task);
 	return (
 		<NodeCard
 			nodeId={props.id}
