@@ -1,6 +1,6 @@
 import { Handle, Position } from "@xyflow/react"
 import { cn } from "../../../../lib/utils"
-import { Taskparam } from "@/types/TaskType"
+import { Taskparam } from "@/types/task"
 import NodeParamField from "./NodeParamField"
 
 export function NodeInputs({ children }: { children: React.ReactNode }) {
@@ -10,11 +10,11 @@ export function NodeInputs({ children }: { children: React.ReactNode }) {
 		</div>
 	)
 }
-export function NodeInput({ input , nodeId}: { input: Taskparam , nodeId: string }) {
+export function NodeInput({ input, nodeId }: { input: Taskparam, nodeId: string }) {
 	return (
 		<div className="flex justify-start relative p-3 bg-secondary w-full">
 			<NodeParamField param={input} nodeId={nodeId} />
-			{input.helperText && (
+			{!input.helperText && (
 				<Handle
 					id={input.name}
 					type="target"

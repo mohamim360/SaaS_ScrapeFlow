@@ -1,4 +1,4 @@
-import { TaskParamType, TaskType } from "@/types/TaskType";
+import { TaskParamType, TaskType } from "@/types/task";
 import { GlobeLock, LucideProps } from "lucide-react";
 
 export const LaunchBrowserTask = {

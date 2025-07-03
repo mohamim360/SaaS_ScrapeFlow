@@ -1,5 +1,5 @@
 import { AppNode } from "@/types/appNode";
-import { TaskType } from "@/types/TaskType";
+import { TaskType } from "@/types/task";
 
 export function createFlowNode(
   nodeType: TaskType,
@@ -7,8 +7,8 @@ export function createFlowNode(
 ): AppNode {
   return {
     id: crypto.randomUUID(),
-    type: "FlowScrapeNode",  // ✅ This refers to the node renderer (component) from `nodeTypes`
-		dragHandle:".drag-handle",
+    type: "FlowScrapeNode", // ✅ This refers to the node renderer (component) from `nodeTypes`
+    dragHandle: ".drag-handle",
     data: {
       type: nodeType,
       Inputs: {},

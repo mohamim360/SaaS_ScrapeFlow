@@ -14,7 +14,7 @@ interface TopbarProps {
 function Topbar({ title, subtitle, workflowId }: TopbarProps) {
 	const Router = require("next/navigation").useRouter()
 	return (
-		<header className="flex border-p-2 p-2 border-separate justify-between w-full sticky top-0 z-10 bg-background">
+		<header className="flex border-b-2 p-2 border-separate justify-between w-full sticky top-0 z-10 bg-background">
 			<div className="flex gap-1 flex-1">
 				<TooltipWrapper content="back">
 					<Button variant={"ghost"} size={"icon"} onClick={() => Router.back()}>

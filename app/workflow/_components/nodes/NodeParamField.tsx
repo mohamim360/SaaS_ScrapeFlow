@@ -1,6 +1,6 @@
 "use client"
 
-import { Taskparam, TaskParamType } from "@/types/TaskType"
+import { Taskparam, TaskParamType } from "@/types/task"
 import StringParam from "./param/StringParam"
 import { useReactFlow } from "@xyflow/react"
 import { AppNode } from "@/types/appNode"
