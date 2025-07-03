@@ -11,8 +11,9 @@ export enum TaskParamType {
 export interface Taskparam {
   name: string;
   type: TaskParamType;
-  required: boolean;
+  required?: boolean;
   helperText?: string;
   hidehandle?: boolean;
+  value?: string;
   [key: string]: any;
 }

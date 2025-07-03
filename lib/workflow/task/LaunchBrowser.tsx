@@ -9,8 +9,20 @@ export const LaunchBrowserTask = {
 	),
 	isEntryPoint: true,
 	inputs: [
-		{ name: "Website URL", type: TaskParamType.STRING, required: true, helperText: "eg: https://www.google.com", hideHandle: true },
-	]
+		{
+			name: "Website URL",
+			type: TaskParamType.STRING,
+			required: true,
+			helperText: "eg: https://www.google.com",
+			hideHandle: true
+		},
+	],
+	outputs: [
+		{
+			name: "Web page",
+			type: TaskParamType.BROWSER_INSTANCE
+		}
+	],
 }
 
 //You're assigning a function that returns JSX to the icon key.
