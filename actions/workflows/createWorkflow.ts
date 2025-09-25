@@ -1,6 +1,6 @@
 "use server";
 import { prisma } from "@/lib/prisma";
-import { createFlowNode } from "@/lib/workflow/createFlowNode";
+import { CreateFlowNode } from "@/lib/workflow/createFlowNode";
 import {
   createWorkflowSchema,
   createWorkflowSchemaType,
@@ -37,7 +37,7 @@ export async function createWorkflow(form: createWorkflowSchemaType) {
     edges: [],
   };
 
-  initialFlow.nodes.push(createFlowNode(TaskType.LAUNCH_BROWSER));
+  initialFlow.nodes.push(CreateFlowNode(TaskType.LAUNCH_BROWSER));
 
   const result = await prisma.workflow.create({
     data: {

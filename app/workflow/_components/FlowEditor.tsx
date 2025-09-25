@@ -1,5 +1,5 @@
 "use client"
-import { createFlowNode } from "@/lib/workflow/createFlowNode"
+import { CreateFlowNode } from "@/lib/workflow/createFlowNode"
 import { TaskType } from "@/types/task"
 import { Workflow } from "@prisma/client"
 import { addEdge, Background, BackgroundVariant, Connection, Controls, Edge, getOutgoers, ReactFlow, useEdgesState, useNodesState, useReactFlow } from "@xyflow/react"
@@ -58,7 +58,7 @@ function FlowEditor({ workflow }: { workflow: Workflow }) {
 				y: event.clientY
 			})
 
-			const newNode = createFlowNode(taskType as TaskType, position)
+			const newNode = CreateFlowNode(taskType as TaskType, position)
 			setNodes((nds) => nds.concat(newNode))
 		},
 		[setNodes, screenToFlowPosition]
