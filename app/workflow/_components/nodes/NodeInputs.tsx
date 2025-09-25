@@ -21,6 +21,7 @@ export function NodeInput({ input, nodeId }: { input: Taskparam, nodeId: string 
 			{!input.helperText && (
 				<Handle
 					id={input.name}
+					isConnectable={!isConnected}
 					type="target"
 					position={Position.Left}
 					className={cn("!bg-muted-foreground !border-2 !border-background !-left-2 !w-4 !h-4", ColorForHandle[input.type])}
@@ -30,3 +31,6 @@ export function NodeInput({ input, nodeId }: { input: Taskparam, nodeId: string 
 		</div>
 	)
 }
+
+
+//send toast to user know that is not connectable
