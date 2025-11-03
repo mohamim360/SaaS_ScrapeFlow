@@ -90,7 +90,7 @@ function FlowEditor({ workflow }: { workflow: Workflow }) {
 			return false;
 		}
 
-		//same taskParam type connection
+		//same TaskParam type connection
 
 		const source = nodes.find(node => node.id === connection.source);
 		const target = nodes.find(node => node.id === connection.target)
@@ -125,7 +125,7 @@ function FlowEditor({ workflow }: { workflow: Workflow }) {
 				if (outgoer.id === connection.source) return true;
 				if (hasCycle(outgoer, visited)) return true;
 			}
-			 return false;
+			return false;
 		}
 		const detectedCycle = hasCycle(target);
 		return !detectedCycle;

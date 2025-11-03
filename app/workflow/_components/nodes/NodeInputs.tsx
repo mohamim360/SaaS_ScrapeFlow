@@ -1,6 +1,6 @@
 import { Handle, Position, useEdges } from "@xyflow/react"
 import { cn } from "../../../../lib/utils"
-import { Taskparam } from "@/types/task"
+import { TaskParam } from "@/types/task"
 import NodeParamField from "./NodeParamField"
 import { ColorForHandle } from "./common"
 
@@ -12,12 +12,12 @@ export function NodeInputs({ children }: { children: React.ReactNode }) {
 	)
 }
 
-export function NodeInput({ input, nodeId }: { input: Taskparam, nodeId: string }) {
+export function NodeInput({ input, nodeId }: { input: TaskParam, nodeId: string }) {
 	const edges = useEdges()
 	const isConnected = edges.some(edge => edge.targetHandle === input.name && edge.target === nodeId)
 	return (
 		<div className="flex justify-start relative p-3 bg-secondary w-full">
-			<NodeParamField param={input} nodeId={nodeId} disabled={isConnected}/>
+			<NodeParamField param={input} nodeId={nodeId} disabled={isConnected} />
 			{!input.helperText && (
 				<Handle
 					id={input.name}

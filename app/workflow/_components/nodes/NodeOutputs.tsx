@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { Taskparam } from "@/types/task"
+import { TaskParam } from "@/types/task"
 import { Handle, Position } from "@xyflow/react"
 import { ColorForHandle } from "./common"
 
@@ -13,7 +13,7 @@ export function NodeOutputs({ children }: { children: React.ReactNode }) {
 	)
 }
 
-export function NodeOutput({ output }: { output: Taskparam }) {
+export function NodeOutput({ output }: { output: TaskParam }) {
 	return (
 		<div className="flex justify-end relative p-3 bg-secondary">
 			<p className="text-xs text-muted-foreground">{output.name}
